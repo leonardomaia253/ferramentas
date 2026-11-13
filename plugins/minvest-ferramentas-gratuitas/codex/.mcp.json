@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "minvest-free-tools": {
+      "type": "streamable-http",
+      "url": "https://azobnryexzyeqbgtowyc.supabase.co/functions/v1/minvest-free-tools",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "none"
+          }
+        }
+      }
+    }
+  }
+}

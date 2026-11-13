@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "minvest-free-tools": {
+      "type": "http",
+      "url": "https://azobnryexzyeqbgtowyc.supabase.co/functions/v1/minvest-free-tools"
+    }
+  }
+}

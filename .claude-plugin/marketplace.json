@@ -1,0 +1,16 @@
+{
+  "name": "minvest-ferramentas",
+  "owner": { "name": "MInvest" },
+  "metadata": {
+    "description": "Ferramentas gratuitas MInvest para decisões financeiras e inteligência de mercado.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "minvest-ferramentas-gratuitas",
+      "source": "./plugins/minvest-ferramentas-gratuitas/claude",
+      "description": "Calculadoras financeiras, cenários comparativos e pesquisa exploratória de mercado com fontes citadas.",
+      "version": "1.8.78"
+    }
+  ]
+}

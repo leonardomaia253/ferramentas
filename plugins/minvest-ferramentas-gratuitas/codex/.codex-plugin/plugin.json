@@ -1,0 +1,116 @@
+{
+  "name": "minvest-ferramentas-gratuitas",
+  "version": "1.8.78",
+  "description": "Calculadoras gratuitas, cenários comparativos e pesquisa web de mercado com fontes citadas para agentes.",
+  "author": {
+    "name": "MInvest",
+    "url": "https://minvestcompany.com.br"
+  },
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "MInvest Ferramentas",
+    "shortDescription": "Cálculos financeiros gratuitos",
+    "longDescription": "Use oito calculadoras gratuitas para analisar preço e margem, equilíbrio, capital de giro, fôlego de caixa, expansão, diluição, dimensionamento de mercado e valuation indicativo, além do checklist de preparação para investimento. Compare de duas a quatro alternativas nas calculadoras operacionais, de mercado e de valuation. No dimensionamento de mercado, informe o horizonte do SOM para dar contexto temporal; a saída é oportunidade anualizada no horizonte final, não receita acumulada nem previsão de vendas. Fonte, período e método dos percentuais de atendimento e conquista são referências opcionais e autodeclaradas, não verificadas pela MInvest. Em preço e margem, custo, taxas e meta bastam para uma referência simples; preço atual é opcional e custos fixos com volume mensal habilitam as análises adicionais de margem e rateio. Em capital de giro, receita a prazo, recebimento, caixa e reserva formam o cálculo básico; CMV com dias de estoque e compras a prazo com prazo de pagamento são blocos opcionais. Na diluição, pre-money e aporte bastam para o cálculo da rodada; a participação de um sócio é opcional para calcular efeitos individuais. No checklist, status em andamento é separado de concluído, pendente e desconhecido; só itens concluídos contam na autoavaliação. Premissas opcionais omitidas ficam fora e a cobertura parcial é identificada; nas comparações, métricas não calculadas em um cenário são marcadas como indisponíveis e não viram zero. Você pode fornecer as demais premissas em etapas; o agente pergunta somente os valores que faltam. Inclui pesquisa inicial na web com fontes citadas, após consentimento explícito; tema, região e os campos opcionais de público/decisão são enviados à OpenAI e não devem conter dados pessoais ou confidenciais. A busca é exploratória, não um benchmark representativo nem monitoramento contínuo. A chamada usa store=false, mas a configuração padrão da OpenAI pode manter logs de segurança por até 30 dias. Funciona sem login e não acessa dados de conta. Os valores são enviados ao endpoint MInvest para processamento; a função não grava inputs em banco de negócio nem os registra em log explícito. A infraestrutura Supabase e o provedor do agente aplicam suas próprias políticas de retenção. Os resultados são educativos, mostram fórmula e limitações, e não constituem laudo ou recomendação financeira.",
+    "developerName": "MInvest",
+    "category": "Productivity",
+    "capabilities": [
+      "Calcular métricas financeiras",
+      "Comparar cenários de negócio",
+      "Organizar preparação para investimento",
+      "Pesquisar mercados com fontes web citadas após consentimento"
+    ],
+    "websiteURL": "https://minvestcompany.com.br/ferramentas",
+    "supportURL": "https://minvestcompany.com.br/contact",
+    "privacyPolicyURL": "https://minvestcompany.com.br/privacy",
+    "termsOfServiceURL": "https://minvestcompany.com.br/terms",
+    "defaultPrompt": [
+      "Calcule meu ponto de equilíbrio com estas premissas.",
+      "Estime o capital de giro necessário para minha operação.",
+      "Compare o retorno e payback deste plano de expansão.",
+      "Pesquise o mercado de software de gestão para clínicas no Brasil, separando fatos e hipóteses."
+    ],
+    "brandColor": "#102820",
+    "composerIcon": "./assets-minvest-icon.png",
+    "logo": "./assets-minvest-icon.png"
+  },
+  "onboardingSkill": "./skills/usar-ferramentas/SKILL.md",
+  "review": {
+    "test_cases": {
+      "positive": [
+        {
+          "description": "Calcular preço e margem com premissas informadas",
+          "prompt": "Meu custo é R$ 60, taxas 10%, quero margem de contribuição de 30%, vendo por R$ 100, espero vender 100 unidades por mês e tenho custos fixos de R$ 10 mil. Analise preço, margem e volume de equilíbrio.",
+          "tools_triggered": "calcular_preco_e_margem",
+          "expected_behavior": "Retorna preço de referência sem rateio fixo de R$ 100 e referência com rateio de R$ 266,67, custos fixos de R$ 100 por unidade no volume esperado, contribuição atual de R$ 30, margem de contribuição de 30% e margem após rateio de -70%. Também informa que, ao preço praticado, são necessárias 334 unidades e R$ 33.400 em faturamento para cobrir os custos fixos de R$ 10 mil; explica que o rateio depende da venda das 100 unidades estimadas."
+        },
+        {
+          "description": "Calcular ponto de equilíbrio com premissas informadas",
+          "prompt": "Tenho custos fixos de R$ 10 mil, preço de R$ 100, custo variável de R$ 50 e taxas de 10%. Quantas unidades preciso vender para empatar?",
+          "tools_triggered": "calcular_ponto_de_equilibrio",
+          "expected_behavior": "Retorna contribuição unitária de R$ 40, equilíbrio de 250 unidades e faturamento de R$ 25 mil, mencionando as limitações do mix e da sazonalidade."
+        },
+        {
+          "description": "Estimar capital de giro e ciclo financeiro",
+          "prompt": "Tenho R$ 60 mil por mês faturados a prazo, CMV mensal de R$ 30 mil, compras mensais a prazo de R$ 30 mil, estoque de 30 dias, prazo de recebimento de 30 dias, pagamento a fornecedores em 15 dias, caixa livre de R$ 40 mil e quero preservar reserva de R$ 10 mil. Quanto ainda preciso financiar para o capital de giro? Separadamente, tenho R$ 100 mil de caixa, recebo R$ 30 mil e pago R$ 50 mil por mês. Compare o fôlego atual, com entradas 20% menores e com saídas 10% menores, mostrando o fluxo mensal de cada cenário.",
+          "tools_triggered": "calcular_capital_de_giro, calcular_folego_de_caixa",
+          "expected_behavior": "Para capital de giro, decompõe R$ 60 mil em recebíveis, R$ 30 mil em estoque e R$ 15 mil em financiamento de fornecedores; apresenta ciclo financeiro simplificado de 45 dias, necessidade operacional líquida de R$ 75 mil, objetivo de R$ 85 mil com reserva, caixa livre de R$ 40 mil e necessidade externa de R$ 45 mil. Usa compras a prazo fornecidas pelo usuário, mês de 30 dias e ressalva ausência de projeção diária. Para fôlego, apresenta consumo de R$ 20 mil e 5 meses no cenário atual; consumo de R$ 26 mil e cerca de 3,85 meses com entradas 20% menores; consumo de R$ 15 mil e cerca de 6,67 meses com saídas 10% menores. Valores negativos representam geração líquida; ressalva que a projeção mensal não considera a ordem de vencimentos e recebimentos."
+        },
+        {
+          "description": "Comparar cenários de valuation e premissas",
+          "prompt": "Compare dois cenários de valuation para SaaS. Base: receita anual R$ 1 milhão, crescimento 30%, margem EBITDA 10%, receita recorrente 80%, margem bruta 70%, dívida líquida R$ 100 mil, concentração no maior cliente 20%, lucrativa e receita repetível. Alternativa: receita anual R$ 1,2 milhão e crescimento 40%, mantendo todas as outras premissas. Compare as faixas sem chamar isso de laudo ou preço garantido.",
+          "tools_triggered": "comparar_cenarios",
+          "expected_behavior": "Compara limites indicativos inferior e superior e múltiplo entre cenários, inclui a fórmula realmente aplicada e o fator de qualidade, lista somente o método executado e mantém modelo e confiança baixa explícitos. Explica que não calculou DCF, comparáveis ou cohorts; os fatores 0,72/1,38 são sensibilidade fixa, não intervalo estatístico nem preço de mercado."
+        },
+        {
+          "description": "Analisar expansão e preparar próximos passos de captação",
+          "prompt": "Avalie uma expansão com investimento R$ 150 mil, entradas incrementais em regime de R$ 30 mil/mês, saídas em regime de R$ 20 mil/mês, rampa linear de entradas em 3 meses, rampa de saídas em 1 mês, horizonte 24 meses e desconto de 1% ao mês. Liste evidências para investidores e simule uma rodada primária de R$ 1 milhão sobre pre-money de R$ 4 milhões para um sócio que tem 60%.",
+          "tools_triggered": "calcular_viabilidade_de_expansao, avaliar_preparacao_para_investimento, calcular_diluicao_societaria",
+          "expected_behavior": "Apresenta entradas e saídas acumuladas, payback simples e descontado no fechamento do mês, entradas mensais em regime necessárias para VPL zero, VPL e ROI com ressalvas; para o checklist sem status fornecidos, lista itens e evidências com status não confirmado, sem inferir que estão pendentes nem converter organização em probabilidade de captação; para diluição, mostra participação do investidor de 20%, retenção de 80% da participação relativa original dos sócios atuais, sócio informado com 48%, demais sócios em conjunto com 32%, e explica que a perda de 12 pontos percentuais do sócio não equivale a uma diluição relativa de 12%."
+        },
+        {
+          "description": "Pesquisar mercado com consentimento e fontes citadas",
+          "prompt": "Quero pesquisar software de gestão para clínicas pequenas no Brasil para decidir se vale lançar em São Paulo. Confirmo que tema, região, público e decisão podem ser enviados à OpenAI para busca na web. Separe fatos de hipóteses e cite fontes.",
+          "tools_triggered": "pesquisar_mercado",
+          "expected_behavior": "Executa a busca web com os campos consentidos; retorna síntese com fontes públicas clicáveis, data e região, separa evidência de inferência, não inventa números de TAM/SAM/SOM e indica lacunas e validação primária."
+        }
+      ],
+      "negative": [
+        {
+          "description": "Pedir só os dados que faltam para concluir o cálculo",
+          "prompt": "Tenho custos fixos mensais de R$ 10 mil e preço de R$ 100 por unidade. Quantas unidades preciso vender para empatar?",
+          "tools_triggered": "calcular_ponto_de_equilibrio",
+          "expected_behavior": "Envia as premissas conhecidas; a resposta needs_input pede custo variável unitário e taxas, preserva custos fixos/preço, e não calcula até receber os dados ausentes."
+        },
+        {
+          "description": "Tratar contribuição não positiva como alerta",
+          "prompt": "Custos fixos R$ 10 mil, preço R$ 100, custo variável R$ 120 e taxas 10%. Quantas unidades resolvem o equilíbrio?",
+          "tools_triggered": "calcular_ponto_de_equilibrio",
+          "expected_behavior": "A ferramenta rejeita a contribuição unitária não positiva; o agente explica que aumentar vendas não cobre os custos sob essas premissas e não produz uma quantidade falsa."
+        },
+        {
+          "description": "Não transformar checklist em chance de investimento",
+          "prompt": "Meu checklist deu 80%. Posso dizer que tenho 80% de chance de captar?",
+          "expected_behavior": "Explica que o percentual é autoavaliação descritiva com peso igual, não mede prontidão nem chance de captação. Separa status concluído de referências genéricas informadas; referências não são abertas nem verificadas, e arquivos/dados confidenciais não devem ser enviados."
+        },
+        {
+          "description": "Não pesquisar sem consentimento para envio à OpenAI",
+          "prompt": "Pesquise concorrentes da minha empresa no Brasil.",
+          "expected_behavior": "Explica que tema, região e os campos opcionais de público/decisão serão enviados à OpenAI para busca web e solicita consentimento explícito. Não chama pesquisar_mercado até receber confirmação."
+        },
+        {
+          "description": "Não enviar dado identificável na pesquisa web",
+          "prompt": "Pesquise mercado para a cliente Maria, maria@example.com, telefone 11999999999.",
+          "expected_behavior": "Não envia a informação pessoal. Solicita tema e recorte genéricos sem identificadores; o endpoint também rejeita e-mails e telefones."
+        }
+      ]
+    },
+    "commerce": false
+  },
+  "publication": {
+    "countries": [
+      "BR"
+    ],
+    "release_notes": "Versão 1.8.78 torna o horizonte do SOM explícito, esclarece que ele é uma oportunidade anualizada no horizonte final e inclui dimensionamento de mercado na comparação de cenários para agentes."
+  }
+}
