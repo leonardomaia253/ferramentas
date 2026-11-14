@@ -1,6 +1,6 @@
 {
   "name": "minvest-ferramentas-gratuitas",
-  "version": "1.8.79",
+  "version": "1.8.83",
   "description": "Calculadoras gratuitas, cenários comparativos e pesquisa web de mercado com fontes citadas para agentes.",
   "author": {
     "name": "MInvest",
@@ -111,6 +111,6 @@
     "countries": [
       "BR"
     ],
-    "release_notes": "Versão 1.8.79 amplia contexto e espaço de resposta da pesquisa de mercado e descarta respostas interrompidas para evitar análises incompletas."
+    "release_notes": "Versão 1.8.83 remove unidades duplicadas nos campos e perguntas das ferramentas, melhorando o uso por agentes."
   }
 }

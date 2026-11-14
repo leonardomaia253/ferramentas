@@ -12,7 +12,7 @@
       "name": "minvest-ferramentas-gratuitas",
       "source": "./plugins/minvest-ferramentas-gratuitas/claude",
       "description": "Calculadoras financeiras, cenários comparativos e pesquisa exploratória de mercado com fontes citadas.",
-      "version": "1.8.79"
+      "version": "1.8.83"
     }
   ]
 }

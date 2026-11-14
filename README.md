@@ -2,6 +2,8 @@
 
 Free financial decision tools and cited exploratory market research for Claude Code and Codex.
 
+Current plugin release: 1.8.83.
+
 ## Claude Code
 
 ```sh

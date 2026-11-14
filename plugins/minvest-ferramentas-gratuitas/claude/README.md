@@ -1,5 +1,7 @@
 # MInvest Ferramentas Gratuitas
 
+Versão 1.8.83: rótulos e perguntas gerados para o MCP evitam repetir a unidade, facilitando a leitura pelos agentes.
+
 Oito calculadoras financeiras gratuitas, comparação de cenários e pesquisa exploratória de mercado com fontes públicas clicáveis, sem login e sem acesso a dados de uma conta. A pesquisa pode ser orientada a uma decisão, exige consentimento explícito para enviar tema, região e campos opcionais de público/decisão à OpenAI, e não equivale a benchmark representativo ou monitoramento contínuo. Cada resultado de cálculo traz fórmula, premissas, leitura do cenário e limitações.
 
 Os números são enviados ao endpoint MCP da MInvest para processamento e devolvidos ao mesmo agente. Ao usar um atalho (`prompts/get`), o objetivo e o contexto genérico também são enviados para montar a orientação. A função não grava esses inputs em banco de negócio nem os registra em log explícito; a chamada também passa pela infraestrutura Supabase e pelo provedor do agente, cujas políticas de retenção se aplicam. Informe isso antes do envio e não inclua nomes, contatos, documentos, URLs privadas, credenciais ou dados confidenciais de clientes.
