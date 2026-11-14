@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "minvest-ferramentas-gratuitas",
-  "version": "1.8.78",
+  "version": "1.8.79",
   "description": "Calculadoras gratuitas, cenários comparativos e pesquisa web de mercado com fontes citadas para agentes.",
   "author": {
     "name": "MInvest",
