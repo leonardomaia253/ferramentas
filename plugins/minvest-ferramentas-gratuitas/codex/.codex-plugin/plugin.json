@@ -1,6 +1,6 @@
 {
   "name": "minvest-ferramentas-gratuitas",
-  "version": "1.8.78",
+  "version": "1.8.79",
   "description": "Calculadoras gratuitas, cenários comparativos e pesquisa web de mercado com fontes citadas para agentes.",
   "author": {
     "name": "MInvest",
@@ -111,6 +111,6 @@
     "countries": [
       "BR"
     ],
-    "release_notes": "Versão 1.8.78 torna o horizonte do SOM explícito, esclarece que ele é uma oportunidade anualizada no horizonte final e inclui dimensionamento de mercado na comparação de cenários para agentes."
+    "release_notes": "Versão 1.8.79 amplia contexto e espaço de resposta da pesquisa de mercado e descarta respostas interrompidas para evitar análises incompletas."
   }
 }
